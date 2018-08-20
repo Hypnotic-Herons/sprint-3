@@ -15,5 +15,13 @@
     <div><a href="{% url 'website:register' %}">Register</a></div>
     <div><a href="{% url 'website:login' %}">Login</a></div>
     {% endif %}
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          {% block content %}
+          {% endblock content %}
+        </div>
+      </div>
+    </div>
   </body>
 </html>
