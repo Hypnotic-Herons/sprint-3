@@ -1,24 +1,26 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
+from django.template import RequestContext
+from . import Product
 
 def search_form(request):
-    
-    ''' 
+    '''
 	Author: Meghan Debity
 	Purpose: Input form for search bar feature
 	'''
-
-    return render(request, 'website/search_form.html')
+    return render(request, 'product/search_form.html')
 
 def search(request):
-
-     ''' 
+    '''
 	Author: Meghan Debity
 	Purpose: View search request
 	'''
-
-    if 'q' in request.GET:
-        message = 'You searched for: %r' % request.GET['q']
-    else:
-        message = 'You submitted an empty form.'
-    return HttpResponse(message)
+    query = request.GET.get('q')
+    try:
+        products = Product.objects.filter(title__icontains=query)
+        print("things", products)
+    except Product.DoesNotExist:
+        query = None
+        results = None
+        raise Http404
+    return render(request, 'product/search_result.html', {"results": products,})
