@@ -1,13 +1,13 @@
 <nav>
 	{% if nav_location != 'my_orders' %}
-	  <form action="" method='get'>
+	<a><form action="" method='get'>
 		<input type="submit" value="My Orders">
-	  </form>
+	  </form></a>
 	{% endif %}
 
 	{% if nav_location != 'list_products' %}
 	  <form action="/products" method='get'>
-		<input type="submit" value="My Products">
+		<input type="submit" value="Products">
 	  </form>
 	{% endif %}
 
@@ -22,6 +22,9 @@
 		<input type="submit" value="Profile">
 	  </form>
 	{% endif %}
+
+	<h2>{{user.username}}</h2>
+
 
 	<!-- {% if nav_location != 'add_artist' %}
 	  <form action="/history/artists/add" method='get'>
