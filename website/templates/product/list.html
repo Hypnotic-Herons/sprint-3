@@ -12,9 +12,9 @@
     <h1>Products</h1>
 
 
-    {% for p in products %}
+    {% for product in products %}
       <div>
-        <a href="{% url 'website:detail' pk=prod.pk %">{{p.id }} {{p.title}}</a>
+        <a href="{% url 'website:detail' product.pk %}">{{product.id }} {{product.title}}</a>
       </div>
         {% endfor %}
 
