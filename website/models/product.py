@@ -13,5 +13,3 @@ class Product(models.Model):
     quantity = models.IntegerField()
 
 
-    class Meta:
-        db_table = 'product'
