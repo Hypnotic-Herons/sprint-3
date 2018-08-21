@@ -7,6 +7,14 @@
   </head>
   <body>
     <h1>Welcome to Bangazon!</h1>
+    <!-- Search form -->
+    <h3>
+      <form action="/search/" method="get">
+        <input type="text" name="q" value="{{ query }}">
+        <input type="submit" value="Search">
+      </form>
+    </h3>
+    <!-- End of Search form -->
     {% if user.is_authenticated %}
     <h1>Bangazon says... hello {{ user.username }}!</h1>
     <a href="{% url 'website:logout' %}">Logout</a>
