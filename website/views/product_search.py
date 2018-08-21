@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 def search_form(request):
     
@@ -6,10 +7,18 @@ def search_form(request):
 	Author: Meghan Debity
 	Purpose: Input form for search bar feature
 	'''
-    # Your code
-    if request.method == 'GET': # If the form is submitted
 
-        search_query = request.GET.get('search_box', None)
-        # Do whatever you need with the word the user looked for
+    return render(request, 'website/search_form.html')
 
-    # Your code
+def search(request):
+
+     ''' 
+	Author: Meghan Debity
+	Purpose: View search request
+	'''
+
+    if 'q' in request.GET:
+        message = 'You searched for: %r' % request.GET['q']
+    else:
+        message = 'You submitted an empty form.'
+    return HttpResponse(message)
