@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.template import RequestContext
 
 from website.forms import UserForm, ProductForm
-from website.models.models import Product
+from website.models.models import *
 
 def index(request):
     template_name = 'index.html'
@@ -115,10 +115,14 @@ def sell_product(request):
         return render(request, template_name, {'sell': p})
 
 def list_products(request):
-    all_products = Product.objects.all()
+    products = Product.objects.all()
     template_name = 'product/list.html'
-    return render(request, template_name, {'products': all_products})
+    return render(request, template_name, {'products': products})
 
+def detail_product(request, pk):
+    p = get_object_or_404(Product, pk=pk)
+    template_name = 'product/details.html'
+    return render(request, template_name, {'p': p})
 
 
 

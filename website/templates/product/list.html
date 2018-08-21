@@ -8,14 +8,16 @@
   <body>
     {% block content %}
 
-    <h1>Products</h1>
     <a href="{% url 'website:sell' %}">Sell Your Stuff!</a>
+    <h1>Products</h1>
 
-    <ol>
-    {% for p in all_products %}
-        <li>{{ product.title }}</li>
-    {% endfor %}
-    </ol>
+
+    {% for p in products %}
+      <div>
+        <a href="{% url 'website:detail' pk=prod.pk %">{{p.id }} {{p.title}}</a>
+      </div>
+        {% endfor %}
+
     {% endblock %}
   </body>
 </html>

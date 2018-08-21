@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^register$', views.register, name='register'),
     url(r'^sell$', views.sell_product, name='sell'),
     url(r'products/', views.list_products, name='products'),
+    url(r'detail/', views.detail_product, name='detail'),
 ]
