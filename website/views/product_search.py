@@ -17,9 +17,10 @@ def search(request):
 	'''
     query = request.GET.get('q')
     try:
+        # variable products is defined by products filtered through title; title_icontains makes the search insensitive to upper/lower case
         products = Product.objects.filter(title__icontains=query)
-        print("things", products)
     except Product.DoesNotExist:
+        # if searched product is not in the database, raise error codes
         query = None
         results = None
         raise Http404
