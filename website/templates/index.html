@@ -6,6 +6,12 @@
     <title>Bangazon</title>
   </head>
   <body>
+
+{% block main_stuff %}
+{% comment %} Including navbar in each template so we can pass the location to it each time {% endcomment %}
+{% include "navbar.html" with nav_location=view.location %}
+<!-- <img src="{% static 'history/images/dire_straits.jpg' %}" alt="dire straits"> -->
+{% endblock main_stuff %}
     <h1>Welcome to Bangazon!</h1>
     {% if user.is_authenticated %}
     <h1>Bangazon says... hello {{ user.username }}!</h1>
