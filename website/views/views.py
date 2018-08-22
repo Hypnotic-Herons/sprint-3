@@ -98,20 +98,11 @@ def sell_product(request):
         return render(request, template_name, {'product_form': product_form})
 
     elif request.method == 'POST':
-        form_data = request.POST
-
-        product = Product(
-            seller = request.user,
-            title = form_data['title'],
-            description = form_data['description'],
-            price = form_data['price'],
-            quantity = form_data['quantity'],
-            category = form_data['category'],
-            date_added = form_data['date_added'],
-            location = form_data['location'],
-            image = form_data['image']
-        )
-        product.save()
+        product_form = ProductForm(data=request.POST)
+        if product_form.is_valid():
+            product = product_form.save(commit=False)
+            product.seller = request.user
+            product.save()
         template_name = 'product/success.html'
         return render(request, template_name, {'sell': product})
 
