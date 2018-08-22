@@ -14,12 +14,15 @@
 	<a href="{% url 'website:sell' %}">Sell Your Stuff!</a>
 	<h1>Category</h1>
 	{% for category in categories %}
-
 	<div>
-		<a href="{% url 'website:category'  %}">{{category}}</a>
-
+		<h2><a href="{% url 'website:category'  %}">{{category}}</a></h2>
+		{% for product in products %}
+			{% if product.category == category %}
+			<p><a href="">{{product}}</a></p>
+			{% endif %}
+		{% endfor %}
 	</div>
-	 {% endfor %} {% endblock %}
+	{% endfor %} {% endblock %}
 </body>
 
 </html>
