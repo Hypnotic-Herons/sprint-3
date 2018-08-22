@@ -6,12 +6,16 @@
     <title>Bangazon</title>
   </head>
   <body>
+    {% block content %}
+
+    <a href="{% url 'website:sell' %}">Sell Your Stuff!</a>
     <h1>Products</h1>
-    <ol>
-    {% for product in products %}
-        <li>{{ product.title }}</li>
-    {% endfor %}
-    </ol>
+      <div>
+        <a href="{% url 'website:detail' product.pk %}">{{product.id }} {{product.title}}</a>
+      </div>
+        {% endfor %}
+
+    {% endblock %}
   </body>
 </html>
 

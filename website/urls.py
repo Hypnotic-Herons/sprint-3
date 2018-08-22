@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^products$', views.list_products, name='list_products'),
     url(r'^search_form/$', views.search_form, name='search_form'),
     url(r'^search/$', views.search, name='search'),
+    url(r'products/', views.list_products, name='products'),
+    url(r'^detail/(?P<pk>\d+)/$', views.detail_product, name='detail'),
 ]

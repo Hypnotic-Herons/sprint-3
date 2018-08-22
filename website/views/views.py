@@ -1,11 +1,11 @@
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
 
 from website.forms import UserForm, ProductForm
-from website.models import Product
+from website.models import *
 
 def index(request):
     template_name = 'index.html'
@@ -100,22 +100,30 @@ def sell_product(request):
     elif request.method == 'POST':
         form_data = request.POST
 
-        p = Product(
+        product = Product(
             seller = request.user,
             title = form_data['title'],
             description = form_data['description'],
             price = form_data['price'],
             quantity = form_data['quantity'],
+            category = form_data['category'],
+            date_added = form_data['date_added'],
+            location = form_data['location'],
         )
-        p.save()
+        product.save()
         template_name = 'product/success.html'
-        return render(request, template_name, {})
+        return render(request, template_name, {'sell': product})
 
 def list_products(request):
-    all_products = Product.objects.all()
+    products = Product.objects.all()
     template_name = 'product/list.html'
-    return render(request, template_name, {'products': all_products})
+    return render(request, template_name, {'products': products})
 
+def detail_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+
+    template_name = 'product/details.html'
+    return render(request, template_name, {'product': product})
 
 
 

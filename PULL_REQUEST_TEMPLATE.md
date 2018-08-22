@@ -16,7 +16,7 @@ code .
 ```
 
 1. navigate to the root
-1. python manage.py makemigrations webiste
+1. python manage.py makemigrations website
 1. python manage.py migrate
 1. python manage.py createsuperuser (this is just for your local use)
 1. python manage.py runserver
