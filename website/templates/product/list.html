@@ -12,9 +12,6 @@
 
     <a href="{% url 'website:sell' %}">Sell Your Stuff!</a>
     <h1>Products</h1>
-
-
-    {% for product in products %}
       <div>
         <a href="{% url 'website:detail' product.pk %}">{{product.id }} {{product.title}}</a>
       </div>

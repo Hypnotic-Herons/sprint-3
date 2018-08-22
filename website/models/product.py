@@ -25,7 +25,5 @@ class Product(models.Model):
     like = models.BooleanField(default=False)
     location = models.CharField(max_length=50)
 
-
-
-
-
+    def __str__(self):
+        return self.title
