@@ -24,7 +24,7 @@ class Product(models.Model):
            validators=[MaxValueValidator(5), MinValueValidator(1)])
     like = models.BooleanField(default=False)
     location = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='image/', default='image/none/no-image.jpg', height_field=None, width_field=None, max_length=None)
+    image = models.ImageField(upload_to='../image/', default='image/none/no-image.jpg', height_field=None, width_field=None, max_length=None)
 
 
 
