@@ -6,7 +6,9 @@
     <title>Bangazon</title>
   </head>
   <body>
-    {% block content %}
+	{% block content %}
+	<link rel="stylesheet" type="text/css" href="{% static 'website/styles.css' %}" />
+	{% include "navbar.html" with nav_location=view.location %}
 
     <a href="{% url 'website:sell' %}">Sell Your Stuff!</a>
     <h1>Products</h1>

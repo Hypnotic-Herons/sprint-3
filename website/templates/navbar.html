@@ -1,0 +1,52 @@
+<nav>
+	{% if nav_location != 'index' %}
+	<a><form action="/" method='get'>
+		<input type="submit" value="Home">
+	</form></a>
+	{% endif %}
+
+	{% if nav_location != 'my_orders' %}
+	<a><form action="" method='get'>
+		<input type="submit" value="My Orders">
+	  </form></a>
+	{% endif %}
+
+	{% if nav_location != 'list_products' %}
+	  <form action="/products" method='get'>
+		<input type="submit" value="Products">
+	  </form>
+	{% endif %}
+
+	{% if nav_location != 'sell' %}
+	  <form action="/sell" method='get'>
+		<input type="submit" value="Sell A Product">
+	  </form>
+	{% endif %}
+
+	{% if nav_location != 'profile' %}
+	  <form action="" method='get'>
+		<input type="submit" value="Profile">
+	  </form>
+	{% endif %}
+
+	<h2>{{user.username}}</h2>
+
+
+	<!-- {% if nav_location != 'add_artist' %}
+	  <form action="/history/artists/add" method='get'>
+		<input type="submit" value="Add Artist">
+	  </form>
+	{% endif %}
+
+	{% if nav_location != 'add_album' %}
+	  <form action="/history/albums/add" method='get'>
+		<input type="submit" value="Add Album">
+	  </form>
+	{% endif %}
+
+	{% if nav_location != 'albums' %}
+	  <form action="/history/albums" method='get'>
+		<input type="submit" value="View My Albums">
+	  </form>
+	{% endif %} -->
+  </nav>

@@ -1,1 +1,1 @@
-from .models import *
+from .product import *
