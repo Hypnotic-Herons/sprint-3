@@ -125,6 +125,10 @@ def detail_product(request, pk):
     template_name = 'product/details.html'
     return render(request, template_name, {'product': product})
 
+def category_product(request):
+	products = Product.objects.all()
+	template_name = 'product/category.html'
+	return render(request, template_name, {'products': products})
 
 
 
