@@ -1,4 +1,10 @@
 <nav>
+	{% if nav_location != 'index' %}
+	<a><form action="/" method='get'>
+		<input type="submit" value="Home">
+	</form></a>
+	{% endif %}
+
 	{% if nav_location != 'my_orders' %}
 	<a><form action="" method='get'>
 		<input type="submit" value="My Orders">
