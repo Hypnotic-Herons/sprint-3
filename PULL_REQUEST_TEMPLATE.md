@@ -1,6 +1,6 @@
 ## Link to Ticket
 Closes
-
+ 
 ## Description of Proposed Changes
 -
 
@@ -10,7 +10,7 @@ Outline the steps to test
 
 ```
 git fetch --all
-git checkout addComputer
+git checkout 
 code .
 
 ```
@@ -18,14 +18,9 @@ code .
 1. navigate to the root
 1. python manage.py makemigrations website
 1. python manage.py migrate
-1. python manage.py createsuperuser (this is just for your local use)
+1. in DB Browser, add products/categories as needed
 1. python manage.py runserver
-1. login on the admin view http://127.0.0.1:8000/admin
-1. add a few computers, departments and training programs and employees
-1. look at the browser view for computers to see the list http://127.0.0.1:8000/HRIT/computers/
-1. click on "add a computer" and you should see a form to add make, mfr and purch_date
-1. click submit and you should see the computer you just created in the computer list
-
+1. login or register on view http://127.0.0.1:8000/
 
 ## Impacted Areas in Application
 
