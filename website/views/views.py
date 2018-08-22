@@ -127,8 +127,13 @@ def detail_product(request, pk):
 
 def category_product(request):
 	products = Product.objects.all()
+	categories = list()
+	for product in products:
+		print(product.category)
+		if product.category not in categories:
+			categories.append(product.category)
 	template_name = 'product/category.html'
-	return render(request, template_name, {'products': products})
+	return render(request, template_name, {'products': products, 'categories': categories})
 
 
 

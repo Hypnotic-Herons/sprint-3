@@ -1,24 +1,25 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Bangazon</title>
-  </head>
-  <body>
+
+<head>
+	<meta charset="utf-8">
+	<title>Bangazon</title>
+</head>
+
+<body>
 	{% block content %}
-	<link rel="stylesheet" type="text/css" href="{% static 'website/styles.css' %}" />
-	{% include "navbar.html" with nav_location=view.location %}
+	<link rel="stylesheet" type="text/css" href="{% static 'website/styles.css' %}" /> {% include "navbar.html" with nav_location=view.location %}
 
-    <a href="{% url 'website:sell' %}">Sell Your Stuff!</a>
+	<a href="{% url 'website:sell' %}">Sell Your Stuff!</a>
 	<h1>Category</h1>
-		{% for product in products %}
-      <div>
-        <a href="{% url 'website:category'  %}">{{product.category}}</a>
-      </div>
-        {% endfor %}
+	{% for category in categories %}
 
-    {% endblock %}
-  </body>
+	<div>
+		<a href="{% url 'website:category'  %}">{{category}}</a>
+
+	</div>
+	 {% endfor %} {% endblock %}
+</body>
+
 </html>
-
