@@ -26,7 +26,5 @@ class Product(models.Model):
     location = models.CharField(max_length=50)
     image = models.ImageField(upload_to='../image/', default='image/none/no-image.jpg', height_field=None, width_field=None, max_length=None)
 
-
-
-
-
+    def __str__(self):
+        return self.title
