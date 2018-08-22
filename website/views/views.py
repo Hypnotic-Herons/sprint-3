@@ -109,6 +109,7 @@ def sell_product(request):
             category = form_data['category'],
             date_added = form_data['date_added'],
             location = form_data['location'],
+            image = form_data['image']
         )
         product.save()
         template_name = 'product/success.html'
