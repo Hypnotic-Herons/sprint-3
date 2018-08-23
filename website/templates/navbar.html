@@ -35,24 +35,11 @@
 	  </form>
 	{% endif %}
 
-	<h2>{{user.username}}</h2>
-
-
-	<!-- {% if nav_location != 'add_artist' %}
-	  <form action="/history/artists/add" method='get'>
-		<input type="submit" value="Add Artist">
-	  </form>
+	{% if nav_location != 'index' %}
+	<a> <form action="/search/" method="get">
+		<input type="text" name="q" value="{{ query }}">
+		<input type="submit" value="Search">
+	</form></a>
 	{% endif %}
-
-	{% if nav_location != 'add_album' %}
-	  <form action="/history/albums/add" method='get'>
-		<input type="submit" value="Add Album">
-	  </form>
-	{% endif %}
-
-	{% if nav_location != 'albums' %}
-	  <form action="/history/albums" method='get'>
-		<input type="submit" value="View My Albums">
-	  </form>
-	{% endif %} -->
+	
   </nav>

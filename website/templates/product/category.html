@@ -16,7 +16,7 @@
 	{% for category in categories %}
 	<div>
 		<h2>{{category}} ()</h2>
-		{% for product in products %}
+		{% for product in products|slice:'0:3' %}
 			{% if product.category == category %}
 			<p><a href="{% url 'website:detail' pk=product.id%}">{{product}}</a></p>
 			{% endif %}
