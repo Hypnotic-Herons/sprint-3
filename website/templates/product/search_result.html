@@ -5,20 +5,30 @@
     <title>Search</title>
 </head>
 <body>
-		{% if results %}
-		{% for result in results %}
-		<!-- result.xxxx is searched for product with properties included -->
-		  {{ result.title}}
-		  {{ result.description }}
-		  {{ result.price }}
+	<h1>HELLO?!?!</h1>
+
+	{% if products|length > 0 %}
+		{% for result in products %}
+	<!-- result.xxxx is searched for product with properties included -->
+			{{ result.title}}
+			{{ result.description }}
+			{{ result.price }}
 		{% endfor %}
-	  {% else %}
-		  <h3 class='error'>Please enter a valid search request</h3>
-		  <form method="get" action="/search/">
-			<input type="text" name="q" id="id_q" value="{{ query }}"/>
-			<input type="submit" value="Search" />
-		  </form>
-	  {% endif %}
+	
+	{% elif locations|length > 0 %}
+		{% for result in locations %}
+			{{ result.title}}
+			{{ result.description }}
+			{{ result.price }}
+		{% endfor %}
+			
+	{% else %}
+		<h3 class='error'>Please enter a valid search request</h3>
+		<form method="get" action="/search/">
+		<input type="text" name="q" id="id_q" value="{{ query }}"/>
+		<input type="submit" value="Search" />
+		</form>
+	{% endif %}
     
 </body>
 </html>
