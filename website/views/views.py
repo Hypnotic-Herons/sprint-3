@@ -129,7 +129,6 @@ def category_product(request):
 	products = Product.objects.all()
 	categories = list()
 	for product in products:
-		print(product.category)
 		if product.category not in categories:
 			categories.append(product.category)
 	template_name = 'product/category.html'

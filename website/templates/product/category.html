@@ -15,10 +15,10 @@
 	<h1>Category</h1>
 	{% for category in categories %}
 	<div>
-		<h2><a href="{% url 'website:category'  %}">{{category}}</a></h2>
+		<h2>{{category}} ()</h2>
 		{% for product in products %}
 			{% if product.category == category %}
-			<p><a href="">{{product}}</a></p>
+			<p><a href="{% url 'website:detail' pk=product.id%}">{{product}}</a></p>
 			{% endif %}
 		{% endfor %}
 	</div>
