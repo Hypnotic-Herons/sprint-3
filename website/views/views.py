@@ -94,6 +94,16 @@ def user_logout(request):
     # in the URL in redirects?????
     return HttpResponseRedirect('/')
 
+def list_products(request):
+    products = Product.objects.all()
+    template_name = 'product/list.html'
+    return render(request, template_name, {'products': products})
+
+def detail_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+
+    template_name = 'product/details.html'
+    return render(request, template_name, {'product': product})
 
 def sell_product(request):
     if request.method == 'GET':
@@ -110,16 +120,11 @@ def sell_product(request):
         template_name = 'product/success.html'
         return render(request, template_name, {'sell': product})
 
-def list_products(request):
-    products = Product.objects.all()
-    template_name = 'product/list.html'
-    return render(request, template_name, {'products': products})
+@login_required
+def account_view(request):
 
-def detail_product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'account.html')
 
-    template_name = 'product/details.html'
-    return render(request, template_name, {'product': product})
 
 
 
