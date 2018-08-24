@@ -28,11 +28,11 @@ def register(request):
     # on Django's built-in User model
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-
+# profile_form = profileform
         if user_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
-
+# check both are valid
             # Now we hash the password with the set_password method.
             # Once hashed, we can update the user object.
             user.set_password(user.password)
@@ -48,6 +48,7 @@ def register(request):
         template_name = 'register.html'
         return render(request, template_name, {'user_form': user_form})
 
+# pass profile form through render as well. one visible form, 2 under the hood
 
 def login_user(request):
     '''Handles the creation of a new user for authentication
