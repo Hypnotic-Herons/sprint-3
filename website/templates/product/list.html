@@ -15,7 +15,7 @@
     {% for product in products %}
     <div>
         <a href="{% url 'website:detail' product.pk %}">{{product.id }} {{product.title}}</a>
-        <img src="{{product.image.url}}" alt="">
+        <img src="{{MEDIA_URL}} {{product.image.url}}" alt="">
       </div>
         {% endfor %}
 
