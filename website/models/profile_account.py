@@ -14,7 +14,6 @@ class CustomerRegistration(models.Model):
 	state = models.CharField(max_length=10)
 	zip = models.IntegerField()
 	phone_number = models.IntegerField()
-	payment_option = models.ForeignKey('Payment', on_delete=models.CASCADE)
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 	def __str__(self):

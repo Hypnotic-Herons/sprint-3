@@ -21,7 +21,8 @@
         <p>Quantity: {{product.quantity}}</p>
         <p>Category: {{product.category_name}}</p>
 		<p>Location: {{product.location}}</p>
-		<p>Local Delivery: {{product.local_delivery}}</p>
+        <p>Local Delivery: {{product.local_delivery}}</p>
+        <img src="{{ MEDIA_URL }} {{ product.image.url }}" alt="">
 		<button>Add to Cart</button>
 
 
