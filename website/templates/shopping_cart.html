@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+		<link rel="stylesheet" type="text/css" href="{% static 'website/styles.css' %}" />
+		{% include "navbar.html" with nav_location=view.location %}
+
+
+
+
+    <h1>Shopping Cart goes here</h1>
+
+    <a href="{% url 'website:products' %}">List Products</a>
+
+</body>
+</html>
