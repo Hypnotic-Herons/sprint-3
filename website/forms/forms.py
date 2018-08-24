@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django import forms
 from website.models import Product
 from website.models import Category
-from website.models import ProfileRegistration
+from website.models import CustomerRegistration
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -11,11 +11,11 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password', 'first_name', 'last_name',)
 
-class RegisterUser(forms.ModelForm):
+class CustomerForm(forms.ModelForm):
 
     class Meta:
-        model = ProfileRegistration
-        fields = ['first_name', 'last_name', 'address', 'phone_number', 'payment_options']
+        model = CustomerRegistration
+        fields = ['street', 'city', 'state', 'zip', 'phone_number']
 
 class ProductForm(forms.ModelForm):
 

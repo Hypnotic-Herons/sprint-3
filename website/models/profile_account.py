@@ -1,22 +1,24 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models import *
 
 
 
-class ProfileRegistration(models.Model):
+class CustomerRegistration(models.Model):
 	'''
 	Author: Meghan Debity
 	Purpose: Model for buying and selling user(s)
 	'''
-	first_name = models.CharField(max_length=20)
-	last_name = models.CharField(max_length=20)
-	address = models.CharField(max_length=100)
+	street = models.CharField(max_length=30)
+	city = models.CharField(max_length=30)
+	state = models.CharField(max_length=10)
+	zip = models.IntegerField()
 	phone_number = models.IntegerField()
 	payment_option = models.ForeignKey('Payment', on_delete=models.CASCADE)
-	order_history = models.ForeignKey('Order', on_delete=models.CASCADE)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.title
+		return f'{self.user.username}'
 
 	class Meta:
-		db_table = "user"
+		db_table = "customer"
