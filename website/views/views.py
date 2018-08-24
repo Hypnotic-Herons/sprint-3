@@ -3,8 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
-
-from website.forms import UserForm, ProductForm
+from website.forms import UserForm, ProductForm, CustomerForm
 from website.models import *
 
 def index(request):
@@ -28,11 +27,14 @@ def register(request):
     # on Django's built-in User model
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
+        customer_form = CustomerForm(data=request.POST)
 
         if user_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
-
+            customer = customer_form.save(commit=False)
+            customer.user = user
+            customer.save()
             # Now we hash the password with the set_password method.
             # Once hashed, we can update the user object.
             user.set_password(user.password)
@@ -45,9 +47,11 @@ def register(request):
 
     elif request.method == 'GET':
         user_form = UserForm()
+        customer_form = CustomerForm()
         template_name = 'register.html'
-        return render(request, template_name, {'user_form': user_form})
+        return render(request, template_name, {'user_form': user_form, 'customer_form': customer_form})
 
+# pass profile form through render as well. one visible form, 2 under the hood
 
 def login_user(request):
     '''Handles the creation of a new user for authentication
@@ -90,6 +94,16 @@ def user_logout(request):
     # in the URL in redirects?????
     return HttpResponseRedirect('/')
 
+def list_products(request):
+    products = Product.objects.all()
+    template_name = 'product/list.html'
+    return render(request, template_name, {'products': products})
+
+def detail_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+
+    template_name = 'product/details.html'
+    return render(request, template_name, {'product': product})
 
 def sell_product(request):
     if request.method == 'GET':
@@ -106,16 +120,11 @@ def sell_product(request):
         template_name = 'product/success.html'
         return render(request, template_name, {'sell': product})
 
-def list_products(request):
-    products = Product.objects.all()
-    template_name = 'product/list.html'
-    return render(request, template_name, {'products': products})
+@login_required
+def account_view(request):
 
-def detail_product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'account.html')
 
-    template_name = 'product/details.html'
-    return render(request, template_name, {'product': product})
 
 def category_product(request):
 	categories = Category.objects.all()
