@@ -118,13 +118,21 @@ def detail_product(request, pk):
     return render(request, template_name, {'product': product})
 
 def category_product(request):
+	categories = Category.objects.all()
 	products = Product.objects.all()
-	categories = list()
-	for product in products:
-		if product.category not in categories:
-			categories.append(product.category)
 	template_name = 'product/category.html'
-	return render(request, template_name, {'products': products, 'categories': categories})
+	return render(request, template_name, {'categories': categories, 'products': products})
+
+
+
+
+	# products = Product.objects.all()
+	# categories = list()
+	# for product in products:
+	# 	if product.category not in categories:
+	# 		categories.append(product.category)
+	# template_name = 'product/category.html'
+	# return render(request, template_name, {'products': products, 'categories': categories})
 
 
 
