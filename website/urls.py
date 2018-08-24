@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^search/$', views.search, name='search'),
     url(r'products/', views.list_products, name='products'),
     url(r'^detail/(?P<pk>\d+)/$', views.detail_product, name='detail'),
-	url(r'^category$', views.category_product, name='category')
+	url(r'^category$', views.category_product, name='category'),
+	url(r'^shopping_cart$', views.shopping_cart, name='order')
 ]

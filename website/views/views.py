@@ -123,7 +123,9 @@ def category_product(request):
 	template_name = 'product/category.html'
 	return render(request, template_name, {'categories': categories, 'products': products})
 
-
+def shopping_cart(request):
+    template_name = 'shopping_cart.html'
+    return render(request, template_name)
 
 
 	# products = Product.objects.all()

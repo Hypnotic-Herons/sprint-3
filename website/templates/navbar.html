@@ -41,5 +41,11 @@
 		<input type="submit" value="Search">
 	</form></a>
 	{% endif %}
-	
+
+	{% if nav_location != 'order' %}
+	  <form action="/shopping_cart" method='get'>
+		<input type="submit" value="Cart">
+	  </form>
+	{% endif %}
+
   </nav>
